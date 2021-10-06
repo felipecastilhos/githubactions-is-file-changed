@@ -20,9 +20,16 @@ jobs:
         uses: tj-actions/changed-files@v10
 
       - name: List all modified files
+        id: has-modified
         run: |
-          for file in "${{ steps.changed-files.outputs.all_modified_files }}"; do
-            echo "$file was modified"
-          done
+          echo ${{ steps.changed-files.outputs.all_modified_files }} 
           
+        #grep -e "content\"   
+        #| echo "::set-output name=value::$?"
+
+      - name: Content is modified
+        if: ${{ steps.has-modified.outputs.value }}
+        run: |
+          echo "sabes habibs"
+
 
