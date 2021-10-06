@@ -22,13 +22,10 @@ jobs:
       - name: List all modified files
         id: has-modified
         run: |
-          echo ${{ steps.changed-files.outputs.all_modified_files }} | grep -e 'content\' | echo $?
-          
-        #grep -e "content\"   
-        #| echo "::set-output name=value::$?"
+          echo "${{ steps.changed-files.outputs.all_modified_files }}" | grep -e 'content\/' > /dev/null; echo "$?"
 
       - name: Content is modified
-        if: ${{ steps.has-modified.outputs.value }}
+        if: '${{ steps.has-modified.outputs.value }} == 0'
         run: |
           echo "sabes habibs"
 
