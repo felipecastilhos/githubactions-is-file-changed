@@ -22,7 +22,7 @@ jobs:
       - name: List all modified files
         id: has-modified
         run: |
-          echo ${{ steps.changed-files.outputs.all_modified_files }} 
+          echo ${{ steps.changed-files.outputs.all_modified_files }} | grep -e 'content\' | echo $?
           
         #grep -e "content\"   
         #| echo "::set-output name=value::$?"
