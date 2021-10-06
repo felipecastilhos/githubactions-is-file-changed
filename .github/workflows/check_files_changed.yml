@@ -1,6 +1,7 @@
 name: Validate Pull Request
 
-on: push
+on: 
+  push:
       branches: 
         - main
 
