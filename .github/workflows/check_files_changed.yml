@@ -22,10 +22,10 @@ jobs:
       - name: List all modified files
         id: has-modified
         run: |
-          echo "${{ steps.changed-files.outputs.all_modified_files }}" | grep -e 'content\/' > /dev/null; echo "$?"
+               echo "${{ steps.changed-files.outputs.all_modified_files }}" | ./.github/workflows/scripts/diff.sh "content/"; echo "$?"
 
       - name: Content is modified
-        if: '${{ steps.has-modified.outputs.value }} == 0'
+        if: '${{ steps.has-modified.outputs.has-modified.has-modified }} == 0'
         run: |
           echo "sabes habibs"
 
